@@ -20,9 +20,9 @@ func main() {
 	if portEnvErr != nil {
 		panic("PORT not available")
 	}
-	fmt.Println(port)
 	app.NewRouter(r)
-	http.Handle("/api/v1/", r)
+	http.Handle("/", r)
+	fmt.Printf("Server Running on Port %d\n", port)
 	address := fmt.Sprintf("localhost:%d", port)
 	log.Fatal(http.ListenAndServe(address, r))
 }
