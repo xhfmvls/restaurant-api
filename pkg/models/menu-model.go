@@ -25,9 +25,9 @@ func (food *Food) AddFood() *Food {
 	return food
 }
 
-func GetMenu() []Food {
+func GetMenu(sortType string) []Food {
 	var Foods []Food
-	db.Find(&Foods)
+	db.Order(sortType).Find(&Foods)
 	return Foods
 }
 

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/gorilla/mux"
 	"github.com/xhfmvls/restaurant-api/pkg/models"
@@ -23,7 +24,23 @@ func PostFood(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetMenu(w http.ResponseWriter, r *http.Request) {
-	menu := models.GetMenu()
+	sortType := r.URL.Query().Get("sort")
+	if sortType == "" {
+		sortType = "id-asc"
+	}
+	switch sortType {
+	case
+		"id-asc",
+		"price-asc",
+		"price-desc",
+		"name-asc",
+		"name-desc":
+		sortType = strings.ReplaceAll(sortType, "-", " ")
+	default:
+		panic("Sort Type not Valid")
+	}
+
+	menu := models.GetMenu(sortType)
 	res, _ := json.Marshal(menu)
 	w.Header().Set("content-type", "pkglication/json")
 	w.WriteHeader(http.StatusOK)
