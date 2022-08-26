@@ -5,7 +5,10 @@ import (
 	"net/http"
 	"strconv"
 
+	// "strings"
+
 	"github.com/gorilla/mux"
+	"github.com/xhfmvls/restaurant-api/pkg/middlewares"
 	"github.com/xhfmvls/restaurant-api/pkg/models"
 	"github.com/xhfmvls/restaurant-api/pkg/utils"
 )
@@ -23,7 +26,10 @@ func PostFood(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetMenu(w http.ResponseWriter, r *http.Request) {
-	menu := models.GetMenu()
+	sortType := r.Context().Value(middlewares.SortKey).(string)
+	limit := r.Context().Value(middlewares.LimitKey).(int)
+	page := r.Context().Value(middlewares.PageKey).(int)
+	menu := models.GetMenu(sortType, page, limit)
 	res, _ := json.Marshal(menu)
 	w.Header().Set("content-type", "pkglication/json")
 	w.WriteHeader(http.StatusOK)
