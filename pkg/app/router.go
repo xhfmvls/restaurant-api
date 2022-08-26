@@ -1,15 +1,18 @@
 package app
 
 import (
+	"net/http"
+
 	"github.com/gorilla/mux"
 	"github.com/xhfmvls/restaurant-api/pkg/controllers"
+	"github.com/xhfmvls/restaurant-api/pkg/middlewares"
 )
 
 var NewRouter = func(router *mux.Router) {
 	// POST new Food to Menu
 	router.HandleFunc("/menu", controllers.PostFood).Methods("POST")
 	// GET All foods from Menu
-	router.HandleFunc("/menu", controllers.GetMenu).Methods("GET")
+	router.Handle("/menu", middlewares.Sorting(http.HandlerFunc(controllers.GetMenu))).Methods("GET")
 	// GET food from Menu
 	router.HandleFunc("/menu/{foodId}", controllers.GetFood).Methods("GET")
 	// DELETE food from Menu
