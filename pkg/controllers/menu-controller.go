@@ -27,7 +27,9 @@ func PostFood(w http.ResponseWriter, r *http.Request) {
 
 func GetMenu(w http.ResponseWriter, r *http.Request) {
 	sortType := r.Context().Value(middlewares.SortKey).(string)
-	menu := models.GetMenu(sortType)
+	limit := r.Context().Value(middlewares.LimitKey).(int)
+	page := r.Context().Value(middlewares.PageKey).(int)
+	menu := models.GetMenu(sortType, page, limit)
 	res, _ := json.Marshal(menu)
 	w.Header().Set("content-type", "pkglication/json")
 	w.WriteHeader(http.StatusOK)
