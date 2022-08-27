@@ -1,0 +1,569 @@
+{
+	"info": {
+		"_postman_id": "83dfbde6-0aa2-47db-821c-d4e4c345162a",
+		"name": "Restaurant API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17856588"
+	},
+	"item": [
+		{
+			"name": "POST Food",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"Zuppa Soup\",\r\n    \"Price\": 2.56\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/menu",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Sorted by the name)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?sort=name-asc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "name-asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Sorted by the name descending)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?sort=name-desc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "name-desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Sorted by the most to least expensive)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?sort=price-desc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "price-desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Sorted by the least to most expensive)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?sort=price-asc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "price-asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (1st Page)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?page=1&limit=8",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (2nd Page)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?page=2&limit=5",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (2nd Page + Sorted)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?page=2&limit=5&sort=price-asc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "sort",
+							"value": "price-asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Search Pizza)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?name=Pizza",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Pizza"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Search Hot Dog)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?name=Hot Dog",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Hot Dog"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Filtered By Minumum Price)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?min=3.3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "min",
+							"value": "3.3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Filtered By Maximum Price)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?max=3.3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "3.3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Filtered By Minumum and Minimum Price)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?min=3&max=4.2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "min",
+							"value": "3"
+						},
+						{
+							"key": "max",
+							"value": "4.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Filtered By Maximum Price and Sorted by Name)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?max=3.3&sort=name-asc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "3.3"
+						},
+						{
+							"key": "sort",
+							"value": "name-asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (Filtered By Minumum and Minimum Price and Sorted By Price)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?min=2&max=4.2&sort=price-asc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "min",
+							"value": "2"
+						},
+						{
+							"key": "max",
+							"value": "4.2"
+						},
+						{
+							"key": "sort",
+							"value": "price-asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (1st Page + Sorted + Filtered)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?page=1&limit=5&sort=price-asc&min=1.15&max=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "sort",
+							"value": "price-asc"
+						},
+						{
+							"key": "min",
+							"value": "1.15"
+						},
+						{
+							"key": "max",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Menu (2nd Page + Sorted + Filtered)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu?page=2&limit=5&sort=price-asc&min=1.15&max=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "sort",
+							"value": "price-asc"
+						},
+						{
+							"key": "min",
+							"value": "1.15"
+						},
+						{
+							"key": "max",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Food by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Food",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": 3.45\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/menu/17",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Food",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
