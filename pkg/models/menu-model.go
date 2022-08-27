@@ -25,11 +25,14 @@ func (food *Food) AddFood() *Food {
 	return food
 }
 
-func GetMenu(sortType string, page int, limit int, searchName string) []Food {
+func GetMenu(sortType string, page int, limit int, searchName string, priceQuery string) []Food {
 	offset := (page - 1) * limit
-	name := searchName
 	var Foods []Food
-	db.Where(Food{Name: name}).Order(sortType).Offset(offset).Limit(limit).Find(&Foods)
+	if priceQuery != "" {
+		db.Where(priceQuery).Order(sortType).Offset(offset).Limit(limit).Find(&Foods)
+	} else {
+		db.Where(Food{Name: searchName}).Order(sortType).Offset(offset).Limit(limit).Find(&Foods)
+	}
 	return Foods
 }
 
