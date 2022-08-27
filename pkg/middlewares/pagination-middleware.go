@@ -17,7 +17,7 @@ func Pagination(next http.Handler) http.Handler {
 			strPage = "1"
 		}
 		if strLimit == "" {
-			strLimit = "10"
+			strLimit = "10000"
 		}
 
 		page, pageErr := strconv.Atoi(strPage)
