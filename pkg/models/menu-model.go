@@ -44,19 +44,19 @@ func GetMenu(sortType string, page int, limit int, searchName string, priceQuery
 	return Foods
 }
 
-func GetFoodById(id int64) *Food {
+func GetFoodById(id int64) Food {
 	var searchedFood Food
 	db.Where("ID=?", id).Find(&searchedFood)
-	return &searchedFood
+	return searchedFood
 }
 
-func DeleteFoodById(id int64) *Food {
+func DeleteFoodById(id int64) Food {
 	var deletedFood Food
 	db.Where("ID=?", id).Delete(&deletedFood)
-	return &deletedFood
+	return deletedFood
 }
 
-func UpdateFoodById(food *Food, id int64) *Food {
+func UpdateFoodById(food *Food, id int64) Food {
 	foodDetails := GetFoodById(id)
 	if food.Name != "" {
 		foodDetails.Name = food.Name
