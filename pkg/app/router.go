@@ -19,4 +19,9 @@ var NewRouter = func(router *mux.Router) {
 	router.HandleFunc("/menu/{foodId}", controllers.DeleteFood).Methods("DELETE")
 	// PUT (Update) food from Menu
 	router.HandleFunc("/menu/{foodId}", controllers.UpdateFood).Methods("PUT")
+
+	// User Login
+	router.HandleFunc("/auth/login", controllers.Login).Methods("POST")
+	// Register
+	router.HandleFunc("/auth/register", controllers.Register).Methods("POST")
 }
