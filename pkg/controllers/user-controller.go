@@ -60,7 +60,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		Name:    "Token",
 		Value:   tokenString,
 		Expires: exparationTime,
-		Path: "/",
+		Path:    "/",
 	}
 	http.SetCookie(w, &cookie)
 	resp, _ := json.Marshal(JwtResponse{
@@ -120,15 +120,23 @@ func UpdateProfile(w http.ResponseWriter, r *http.Request) {
 	if userCredentials.Password == "" {
 		passwordHash = ""
 	} else {
-		passwordHash = utils.Sha256(userCredentials.Password) 
+		passwordHash = utils.Sha256(userCredentials.Password)
 	}
 
 	updatedUser := models.User{
-		Username: userCredentials.Username,
+		Username:     userCredentials.Username,
 		PasswordHash: passwordHash,
 	}
 	updatedUserDetails := models.UpdateUser(&updatedUser, id)
 	res, _ := json.Marshal(updatedUserDetails)
 	w.WriteHeader(http.StatusCreated)
+	w.Write(res)
+}
+
+func DeleteAccount(w http.ResponseWriter, r *http.Request) {
+	id := r.Context().Value(middlewares.IdKey).(int)
+	deletedUser := models.DeleteUser(id)
+	res, _ := json.Marshal(deletedUser)
+	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
