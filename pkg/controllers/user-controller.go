@@ -2,15 +2,19 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"os"
 	"time"
+
+	// "github.com/gorilla/sessions"
 
 	// "strings"
 
 	// "github.com/gorilla/mux"
 	// "github.com/xhfmvls/restaurant-api/pkg/middlewares"
 	"github.com/dgrijalva/jwt-go"
+	"github.com/xhfmvls/restaurant-api/pkg/middlewares"
 	"github.com/xhfmvls/restaurant-api/pkg/models"
 	"github.com/xhfmvls/restaurant-api/pkg/utils"
 )
@@ -45,19 +49,25 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenString, err := token.SignedString(jwtKey)
 
+	tokenString = fmt.Sprintf("Bearer %s", tokenString)
+
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	http.SetCookie(w, &http.Cookie{
-		Name:    "token",
+
+	cookie := http.Cookie{
+		Name:    "Token",
 		Value:   tokenString,
 		Expires: exparationTime,
-	})
+		Path: "/",
+	}
+	http.SetCookie(w, &cookie)
 	resp, _ := json.Marshal(JwtResponse{
 		Key: tokenString,
 	})
-	
+
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 	w.WriteHeader(http.StatusOK)
 	w.Write(resp)
 }
@@ -71,12 +81,10 @@ func Register(w http.ResponseWriter, r *http.Request) {
 
 	if username == "" || password == "" {
 		w.WriteHeader(http.StatusBadRequest)
-		return 
+		return
 	}
 
 	exsistUser := models.GetUserByName(username)
-
-	println(exsistUser.Username)
 
 	if exsistUser.ID != 0 {
 		w.WriteHeader(http.StatusNotAcceptable)
@@ -84,12 +92,21 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	}
 
 	newUser := models.User{
-		Username: username,
+		Username:     username,
 		PasswordHash: password,
 	}
 
 	createdUser := newUser.CreateUser()
 	res, _ := json.Marshal(createdUser)
+	w.WriteHeader(http.StatusCreated)
+	w.Write(res)
+}
+
+func GetProfile(w http.ResponseWriter, r *http.Request) {
+	username := r.Context().Value(middlewares.UsernameKey).(string)
+
+	searchedUser := models.GetUserByName(username)
+	res, _ := json.Marshal(searchedUser)
 	w.WriteHeader(http.StatusCreated)
 	w.Write(res)
 }

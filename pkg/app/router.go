@@ -24,4 +24,8 @@ var NewRouter = func(router *mux.Router) {
 	router.HandleFunc("/auth/login", controllers.Login).Methods("POST")
 	// Register
 	router.HandleFunc("/auth/register", controllers.Register).Methods("POST")
+
+	// Get User Information
+	router.Handle("/user", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetProfile))).Methods("GET")
+
 }
