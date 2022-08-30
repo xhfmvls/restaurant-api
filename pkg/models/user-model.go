@@ -18,7 +18,7 @@ type Credentials struct {
 }
 
 type Claims struct {
-	Username string `gorm:"" json:"username"`
+	Id int `gorm:"" json:"id"`
 	jwt.StandardClaims
 }
 
@@ -59,7 +59,7 @@ func DeleteUser(id int) User {
 }
 
 func UpdateUser(newUser *User, id int) User {
-	var userDetails User
+	userDetails := GetUserById(id)
 	if newUser.Username != "" {
 		userDetails.Username = newUser.Username
 	}

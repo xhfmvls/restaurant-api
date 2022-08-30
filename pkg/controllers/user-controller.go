@@ -41,7 +41,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	exparationTime := time.Now().Add(time.Minute * 5)
 
 	claims := &models.Claims{
-		Username: username,
+		Id: int(loginUser.ID),
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: exparationTime.Unix(),
 		},
@@ -103,10 +103,32 @@ func Register(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetProfile(w http.ResponseWriter, r *http.Request) {
-	username := r.Context().Value(middlewares.UsernameKey).(string)
-
-	searchedUser := models.GetUserByName(username)
+	id := r.Context().Value(middlewares.IdKey).(int)
+	searchedUser := models.GetUserById(id)
 	res, _ := json.Marshal(searchedUser)
+	w.WriteHeader(http.StatusCreated)
+	w.Write(res)
+}
+
+func UpdateProfile(w http.ResponseWriter, r *http.Request) {
+	id := r.Context().Value(middlewares.IdKey).(int)
+
+	userCredentials := models.Credentials{}
+	utils.ParseBody(r, &userCredentials)
+
+	var passwordHash string
+	if userCredentials.Password == "" {
+		passwordHash = ""
+	} else {
+		passwordHash = utils.Sha256(userCredentials.Password) 
+	}
+
+	updatedUser := models.User{
+		Username: userCredentials.Username,
+		PasswordHash: passwordHash,
+	}
+	updatedUserDetails := models.UpdateUser(&updatedUser, id)
+	res, _ := json.Marshal(updatedUserDetails)
 	w.WriteHeader(http.StatusCreated)
 	w.Write(res)
 }

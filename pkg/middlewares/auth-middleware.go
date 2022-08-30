@@ -14,7 +14,7 @@ import (
 
 var jwtKey = []byte(os.Getenv("JWT_KEY"))
 
-const UsernameKey ContextKey = "username"
+const IdKey ContextKey = "id"
 
 func AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -49,7 +49,7 @@ func AuthMiddleware(next http.Handler) http.Handler {
 			return
 		}
 
-		ctx := context.WithValue(r.Context(), UsernameKey, claims.Username)
+		ctx := context.WithValue(r.Context(), IdKey, claims.Id)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
