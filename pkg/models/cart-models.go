@@ -39,3 +39,9 @@ func GetFoodFromCart(userId int) []Cart {
 	db.Where("User_Id=?", userId).Find(&cart)
 	return cart
 }
+
+func DeleteFoodFromCart(userId int, foodId int) Cart {
+	cart := Cart{}
+	db.Where("User_Id=?", userId).Where("Food_Id=?", foodId).Delete(&cart)
+	return cart
+}

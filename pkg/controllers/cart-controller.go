@@ -37,6 +37,18 @@ func GetCart(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+func DeleteCart(w http.ResponseWriter, r *http.Request) {
+	userId := r.Context().Value(middlewares.IdKey).(int)
+	deleteCartInput := CartInput{}
+	utils.ParseBody(r, &deleteCartInput)
+	foodId := deleteCartInput.FoodId
+	deletedCart := models.DeleteFoodFromCart(userId, foodId)
+	res, _ := json.Marshal(deletedCart)
+	w.Header().Set("content-type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	w.Write(res)
+}
+
 // func UpdateFood(w http.ResponseWriter, r *http.Request) {
 // 	userId :=  r.Context().Value(middlewares.IdKey).(int)
 // 	updatedFoodInput := CartInput{}

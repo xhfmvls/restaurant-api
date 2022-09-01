@@ -36,4 +36,6 @@ var NewRouter = func(router *mux.Router) {
 	router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.AddFood))).Methods("POST")
 	// GET User's Cart
 	router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetCart))).Methods("GET")
+	// Delete User's Cart
+	router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.DeleteCart))).Methods("DELETE")
 }
