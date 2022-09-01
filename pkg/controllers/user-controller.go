@@ -38,7 +38,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	exparationTime := time.Now().Add(time.Minute * 5)
+	exparationTime := time.Now().Add(time.Minute * 20)
 
 	claims := &models.Claims{
 		Id: int(loginUser.ID),
