@@ -33,3 +33,9 @@ func AddFoodToCart(userId int, foodId int, qty int) Cart {
 	db.Create(&cart)
 	return cart
 }
+
+func GetFoodFromCart(userId int) []Cart {
+	var cart []Cart
+	db.Where("User_Id=?", userId).Find(&cart)
+	return cart
+}

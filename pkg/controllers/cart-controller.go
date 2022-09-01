@@ -28,6 +28,15 @@ func AddFood(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+func GetCart(w http.ResponseWriter, r *http.Request) {
+	userId := r.Context().Value(middlewares.IdKey).(int)
+	foodList := models.GetFoodFromCart(userId)
+	res, _ := json.Marshal(foodList)
+	w.Header().Set("content-type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	w.Write(res)
+}
+
 // func UpdateFood(w http.ResponseWriter, r *http.Request) {
 // 	userId :=  r.Context().Value(middlewares.IdKey).(int)
 // 	updatedFoodInput := CartInput{}
