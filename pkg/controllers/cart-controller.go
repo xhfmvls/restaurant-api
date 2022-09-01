@@ -49,8 +49,19 @@ func DeleteCart(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
-// func UpdateFood(w http.ResponseWriter, r *http.Request) {
-// 	userId :=  r.Context().Value(middlewares.IdKey).(int)
-// 	updatedFoodInput := CartInput{}
-// 	utils.ParseBody(r, &addedFoodInput)
-// }
+func UpdateCartFood(w http.ResponseWriter, r *http.Request) {
+	userId := r.Context().Value(middlewares.IdKey).(int)
+	updatedFoodInput := CartInput{}
+	utils.ParseBody(r, &updatedFoodInput)
+	qty := updatedFoodInput.Qty
+	foodId := updatedFoodInput.FoodId
+	if qty == 0 || foodId == 0 {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	updatedCart := models.UpdateFoodQuantity(userId, foodId, qty)
+	res, _ := json.Marshal(updatedCart)
+	w.Header().Set("content-type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	w.Write(res)
+}

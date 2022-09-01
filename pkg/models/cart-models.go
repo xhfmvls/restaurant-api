@@ -45,3 +45,13 @@ func DeleteFoodFromCart(userId int, foodId int) Cart {
 	db.Where("User_Id=?", userId).Where("Food_Id=?", foodId).Delete(&cart)
 	return cart
 }
+
+func UpdateFoodQuantity(userId int, foodId int, qty int) Cart {
+	cart := Cart{}
+	db.Where("User_Id=?", userId).Where("Food_Id=?", foodId).Find(&cart)
+	if qty != 0 {
+		cart.Quantity = qty
+	}
+	db.Save(&cart)
+	return cart
+}
