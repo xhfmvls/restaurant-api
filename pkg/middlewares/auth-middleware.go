@@ -36,13 +36,11 @@ func AuthMiddleware(next http.Handler) http.Handler {
 
 		if err != nil {
 			w.WriteHeader(http.StatusUnauthorized)
-			w.Write([]byte("1"))
 			return
 		}
 
 		if !token.Valid {
 			w.WriteHeader(http.StatusUnauthorized)
-			w.Write([]byte("2"))
 			return
 		}
 

@@ -32,7 +32,8 @@ func GetUserTransactionDetail(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	transactionId, err := strconv.Atoi(vars["transactionId"])
 	if err != nil {
-		panic("ID invalid")
+		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 	transactionInfo := models.GetTransactionDetails(transactionId)
 	res, _ := json.Marshal(transactionInfo)
