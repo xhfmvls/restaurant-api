@@ -5,9 +5,6 @@ import (
 	"net/http"
 	"os"
 	"strings"
-
-	// "encoding/base64"
-
 	"github.com/dgrijalva/jwt-go"
 	"github.com/xhfmvls/restaurant-api/pkg/models"
 )

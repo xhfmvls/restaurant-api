@@ -5,8 +5,6 @@ import (
 	"net/http"
 	"strconv"
 
-	// "strings"
-
 	"github.com/gorilla/mux"
 	"github.com/xhfmvls/restaurant-api/pkg/middlewares"
 	"github.com/xhfmvls/restaurant-api/pkg/models"

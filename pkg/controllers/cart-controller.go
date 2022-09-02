@@ -3,8 +3,6 @@ package controllers
 import (
 	"encoding/json"
 	"net/http"
-
-	// "github.com/gorilla/mux"
 	"github.com/xhfmvls/restaurant-api/pkg/middlewares"
 	"github.com/xhfmvls/restaurant-api/pkg/models"
 	"github.com/xhfmvls/restaurant-api/pkg/utils"
@@ -33,7 +31,7 @@ func GetCart(w http.ResponseWriter, r *http.Request) {
 	foodList := models.GetFoodFromCart(userId)
 	res, _ := json.Marshal(foodList)
 	w.Header().Set("content-type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
 
@@ -45,7 +43,7 @@ func DeleteCart(w http.ResponseWriter, r *http.Request) {
 	deletedCart := models.DeleteFoodFromCart(userId, foodId)
 	res, _ := json.Marshal(deletedCart)
 	w.Header().Set("content-type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
 
@@ -62,6 +60,6 @@ func UpdateCartFood(w http.ResponseWriter, r *http.Request) {
 	updatedCart := models.UpdateFoodQuantity(userId, foodId, qty)
 	res, _ := json.Marshal(updatedCart)
 	w.Header().Set("content-type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
