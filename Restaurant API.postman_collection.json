@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"Name\": \"Zuppa Soup\",\r\n    \"Price\": 2.56\r\n}",
+					"raw": "{\r\n    \"Name\": \"Apple Pie\",\r\n    \"Price\": 4.3\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,11 +21,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/menu",
+					"raw": "{{URL}}/menu",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					]
@@ -39,11 +38,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu",
+					"raw": "{{URL}}/menu",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					]
@@ -57,11 +55,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?sort=name-asc",
+					"raw": "{{URL}}/menu?sort=name-asc",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -81,11 +78,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?sort=name-desc",
+					"raw": "{{URL}}/menu?sort=name-desc",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -105,11 +101,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?sort=price-desc",
+					"raw": "{{URL}}/menu?sort=price-desc",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -129,11 +124,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?sort=price-asc",
+					"raw": "{{URL}}/menu?sort=price-asc",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -153,11 +147,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?page=1&limit=8",
+					"raw": "{{URL}}/menu?page=1&limit=8",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -181,11 +174,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?page=2&limit=5",
+					"raw": "{{URL}}/menu?page=2&limit=5",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -209,11 +201,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?page=2&limit=5&sort=price-asc",
+					"raw": "{{URL}}/menu?page=2&limit=5&sort=price-asc",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -241,11 +232,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?name=Pizza",
+					"raw": "{{URL}}/menu?name=Pizza",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -265,11 +255,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?name=Hot Dog",
+					"raw": "{{URL}}/menu?name=Hot Dog",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -284,16 +273,38 @@
 			"response": []
 		},
 		{
+			"name": "GET Menu (Search Non-Exsisting Food)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/menu?name=Martabak",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"menu"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Martabak"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET Menu (Filtered By Minumum Price)",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?min=3.3",
+					"raw": "{{URL}}/menu?min=3.3",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -313,11 +324,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?max=3.3",
+					"raw": "{{URL}}/menu?max=3.3",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -337,11 +347,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?min=3&max=4.2",
+					"raw": "{{URL}}/menu?min=3&max=4.2",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -365,11 +374,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?max=3.3&sort=name-asc",
+					"raw": "{{URL}}/menu?max=3.3&sort=name-asc",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -393,11 +401,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?min=2&max=4.2&sort=price-asc",
+					"raw": "{{URL}}/menu?min=2&max=4.2&sort=price-asc",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -425,11 +432,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?page=1&limit=5&sort=price-asc&min=1.15&max=3",
+					"raw": "{{URL}}/menu?page=1&limit=5&sort=price-asc&min=1.15&max=3",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -465,11 +471,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu?page=2&limit=5&sort=price-asc&min=1.15&max=3",
+					"raw": "{{URL}}/menu?page=2&limit=5&sort=price-asc&min=1.15&max=3",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu"
 					],
@@ -505,11 +510,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu/3",
+					"raw": "{{URL}}/menu/3",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu",
 						"3"
@@ -525,7 +529,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"price\": 3.45\r\n}",
+					"raw": "{\r\n    \"price\": 1.4\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -533,14 +537,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/menu/17",
+					"raw": "{{URL}}/menu/2",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu",
-						"17"
+						"2"
 					]
 				}
 			},
@@ -552,14 +555,381 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/menu/2",
+					"raw": "{{URL}}/menu/6",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"menu",
-						"2"
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"lennon\",\r\n    \"password\": \"beatles\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"leone\",\r\n    \"password\": \"hello\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN Failed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"leone\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"leone\",\r\n    \"password\": \"hello\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/register",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"lennon\",\r\n    \"password\": \"beatles\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/register",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Profile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"yoko\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Profile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD Food To Cart (Without Quantity)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FoodId\": 9\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/cart",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD Food To Cart (With Quantity)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FoodId\": 4, \r\n    \"Quantity\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/cart",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/cart",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Food From Cart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FoodId\": 9\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/cart",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Food In Cart",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FoodId\": 4,\r\n    \"Quantity\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/cart",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (Create) Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/transaction",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Transactions List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/transaction",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Transaction Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/transaction/5",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction",
+						"5"
 					]
 				}
 			},
