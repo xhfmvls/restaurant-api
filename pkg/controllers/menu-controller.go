@@ -16,7 +16,11 @@ var NewFood models.Food
 func PostFood(w http.ResponseWriter, r *http.Request) {
 	newFood := &models.Food{}
 	utils.ParseBody(r, newFood)
-	food := newFood.AddFood()
+	food, err := newFood.AddFood()
+	if err == 1 {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
 	res, _ := json.Marshal(food)
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusCreated)

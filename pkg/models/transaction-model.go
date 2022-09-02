@@ -42,11 +42,12 @@ func (detail *TransactionDetail) CreateTransactionDetail() *TransactionDetail {
 	return detail
 }
 
-func CreateTransaction(userId int) TransactionInformation {
+func CreateTransaction(userId int) (TransactionInformation, int) {
 	FoodInCartList := GetFoodFromCart(userId)
+	transactionInfo := TransactionInformation{}
 
 	if len(FoodInCartList) == 0 {
-		panic("No Item(s) in Cart")
+		return transactionInfo, 1
 	}
 
 	header := TransactionHeader{}
@@ -70,11 +71,10 @@ func CreateTransaction(userId int) TransactionInformation {
 		transactionDetails = append(transactionDetails, detail)
 	}
 
-	transactionInfo := TransactionInformation{}
 	transactionInfo.TrHeader = header
 	transactionInfo.TrDetails = transactionDetails
 
-	return transactionInfo
+	return transactionInfo, 0
 }
 
 func GetTransactionsHeaderList(userId int) []TransactionHeader {

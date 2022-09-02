@@ -19,13 +19,19 @@ func init() {
 	db.AutoMigrate(&Food{})
 }
 
-func (food *Food) AddFood() *Food {
+func (food *Food) AddFood() (*Food, int) {
 	db.NewRecord(food)
+	if food.Name == "" {
+		return food, 1
+	}
+	if food.Price == 0 {
+		food.Price = 1
+	}
 	db.Create(&food)
-	return food
+	return food, 0
 }
 
-func GetMenu(sortType string, page int, limit int, searchName string, priceQuery string) []Food  {
+func GetMenu(sortType string, page int, limit int, searchName string, priceQuery string) []Food {
 	offset := (page - 1) * limit
 	var Foods []Food
 	if limit != -1 {
