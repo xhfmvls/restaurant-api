@@ -5,8 +5,6 @@ import (
 	"net/http"
 	"strconv"
 
-	// "strings"
-
 	"github.com/gorilla/mux"
 	"github.com/xhfmvls/restaurant-api/pkg/middlewares"
 	"github.com/xhfmvls/restaurant-api/pkg/models"
@@ -18,7 +16,11 @@ var NewFood models.Food
 func PostFood(w http.ResponseWriter, r *http.Request) {
 	newFood := &models.Food{}
 	utils.ParseBody(r, newFood)
-	food := newFood.AddFood()
+	food, err := newFood.AddFood()
+	if err == 1 {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
 	res, _ := json.Marshal(food)
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
@@ -43,7 +45,8 @@ func GetFood(w http.ResponseWriter, r *http.Request) {
 	foodId := vars["foodId"]
 	id, err := strconv.ParseInt(foodId, 0, 0)
 	if err != nil {
-		panic("ID not valid")
+		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 	foodDetails := models.GetFoodById(id)
 	res, _ := json.Marshal(foodDetails)
@@ -57,7 +60,8 @@ func DeleteFood(w http.ResponseWriter, r *http.Request) {
 	foodId := vars["foodId"]
 	id, err := strconv.ParseInt(foodId, 0, 0)
 	if err != nil {
-		panic("ID not valid")
+		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 	deletedFood := models.DeleteFoodById(id)
 	res, _ := json.Marshal(deletedFood)
@@ -74,7 +78,8 @@ func UpdateFood(w http.ResponseWriter, r *http.Request) {
 	foodId := vars["foodId"]
 	id, err := strconv.ParseInt(foodId, 0, 0)
 	if err != nil {
-		panic("ID not valid")
+		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 	newFoodDetail := models.UpdateFoodById(updateFood, id)
 	res, _ := json.Marshal(newFoodDetail)

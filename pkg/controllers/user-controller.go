@@ -6,13 +6,6 @@ import (
 	"net/http"
 	"os"
 	"time"
-
-	// "github.com/gorilla/sessions"
-
-	// "strings"
-
-	// "github.com/gorilla/mux"
-	// "github.com/xhfmvls/restaurant-api/pkg/middlewares"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/xhfmvls/restaurant-api/pkg/middlewares"
 	"github.com/xhfmvls/restaurant-api/pkg/models"
@@ -68,7 +61,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	})
 
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(http.StatusCreated)
 	w.Write(resp)
 }
 
@@ -106,7 +99,7 @@ func GetProfile(w http.ResponseWriter, r *http.Request) {
 	id := r.Context().Value(middlewares.IdKey).(int)
 	searchedUser := models.GetUserById(id)
 	res, _ := json.Marshal(searchedUser)
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
 
@@ -129,7 +122,7 @@ func UpdateProfile(w http.ResponseWriter, r *http.Request) {
 	}
 	updatedUserDetails := models.UpdateUser(&updatedUser, id)
 	res, _ := json.Marshal(updatedUserDetails)
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
 

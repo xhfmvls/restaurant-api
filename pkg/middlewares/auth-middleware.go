@@ -5,9 +5,6 @@ import (
 	"net/http"
 	"os"
 	"strings"
-
-	// "encoding/base64"
-
 	"github.com/dgrijalva/jwt-go"
 	"github.com/xhfmvls/restaurant-api/pkg/models"
 )
@@ -39,13 +36,11 @@ func AuthMiddleware(next http.Handler) http.Handler {
 
 		if err != nil {
 			w.WriteHeader(http.StatusUnauthorized)
-			w.Write([]byte("1"))
 			return
 		}
 
 		if !token.Valid {
 			w.WriteHeader(http.StatusUnauthorized)
-			w.Write([]byte("2"))
 			return
 		}
 

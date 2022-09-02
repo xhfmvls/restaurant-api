@@ -18,20 +18,24 @@ func init() {
 	db.AutoMigrate(&Cart{})
 }
 
-func AddFoodToCart(userId int, foodId int, qty int) Cart {
+func AddFoodToCart(userId int, foodId int, qty int) (Cart, int) {
+	cart := Cart{}
 	if foodId == 0 {
-		panic("Food ID not provided")
+		return cart, 1
 	}
 	if qty == 0 {
 		qty = 1
 	}
-	cart := Cart{}
+	food := GetFoodById(int64(foodId))
+	if food.ID == 0 {
+		return cart, 1
+	}
 	cart.UserId = userId
 	cart.FoodId = foodId
 	cart.Quantity = qty
 	db.NewRecord(cart)
 	db.Create(&cart)
-	return cart
+	return cart, 0
 }
 
 func GetFoodFromCart(userId int) []Cart {

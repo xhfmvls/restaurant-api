@@ -9,42 +9,45 @@ import (
 )
 
 var NewRouter = func(router *mux.Router) {
+
+	v1Router := router.PathPrefix("/v1").Subrouter()
+
 	// POST new Food to Menu
-	router.HandleFunc("/menu", controllers.PostFood).Methods("POST")
+	v1Router.HandleFunc("/menu", controllers.PostFood).Methods("POST")
 	// GET All foods from Menu
-	router.Handle("/menu", middlewares.PriceFilter(middlewares.Search(middlewares.Sorting(middlewares.Pagination(http.HandlerFunc(controllers.GetMenu)))))).Methods("GET")
+	v1Router.Handle("/menu", middlewares.PriceFilter(middlewares.Search(middlewares.Sorting(middlewares.Pagination(http.HandlerFunc(controllers.GetMenu)))))).Methods("GET")
 	// GET food from Menu
-	router.HandleFunc("/menu/{foodId}", controllers.GetFood).Methods("GET")
+	v1Router.HandleFunc("/menu/{foodId}", controllers.GetFood).Methods("GET")
 	// DELETE food from Menu
-	router.HandleFunc("/menu/{foodId}", controllers.DeleteFood).Methods("DELETE")
+	v1Router.HandleFunc("/menu/{foodId}", controllers.DeleteFood).Methods("DELETE")
 	// PUT (Update) food from Menu
-	router.HandleFunc("/menu/{foodId}", controllers.UpdateFood).Methods("PUT")
+	v1Router.HandleFunc("/menu/{foodId}", controllers.UpdateFood).Methods("PUT")
 
 	// User Login
-	router.HandleFunc("/auth/login", controllers.Login).Methods("POST")
+	v1Router.HandleFunc("/auth/login", controllers.Login).Methods("POST")
 	// Register
-	router.HandleFunc("/auth/register", controllers.Register).Methods("POST")
+	v1Router.HandleFunc("/auth/register", controllers.Register).Methods("POST")
 
 	// Get User Information
-	router.Handle("/user", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetProfile))).Methods("GET")
+	v1Router.Handle("/user", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetProfile))).Methods("GET")
 	// Update User Information
-	router.Handle("/user", middlewares.AuthMiddleware(http.HandlerFunc(controllers.UpdateProfile))).Methods("PUT")
+	v1Router.Handle("/user", middlewares.AuthMiddleware(http.HandlerFunc(controllers.UpdateProfile))).Methods("PUT")
 	// Delete Account
-	router.Handle("/user", middlewares.AuthMiddleware(http.HandlerFunc(controllers.DeleteAccount))).Methods("DELETE")
+	v1Router.Handle("/user", middlewares.AuthMiddleware(http.HandlerFunc(controllers.DeleteAccount))).Methods("DELETE")
 
 	// POST Food To User's Cart
-	router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.AddFood))).Methods("POST")
+	v1Router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.AddFood))).Methods("POST")
 	// GET User's Cart
-	router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetCart))).Methods("GET")
+	v1Router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetCart))).Methods("GET")
 	// DELETE User's Cart
-	router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.DeleteCart))).Methods("DELETE")
+	v1Router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.DeleteCart))).Methods("DELETE")
 	// PUT User's Cart (Quantity only)
-	router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.UpdateCartFood))).Methods("PUT")
+	v1Router.Handle("/cart", middlewares.AuthMiddleware(http.HandlerFunc(controllers.UpdateCartFood))).Methods("PUT")
 
 	// POST (Create) Transaction
-	router.Handle("/transaction", middlewares.AuthMiddleware(http.HandlerFunc(controllers.CreateTransaction))).Methods("POST")
+	v1Router.Handle("/transaction", middlewares.AuthMiddleware(http.HandlerFunc(controllers.CreateTransaction))).Methods("POST")
 	// GET Transactions List
-	router.Handle("/transaction", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetUserTransactions))).Methods("GET")
+	v1Router.Handle("/transaction", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetUserTransactions))).Methods("GET")
 	// GET Transaction Detail
-	router.Handle("/transaction/{transactionId}", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetUserTransactionDetail))).Methods("GET")
+	v1Router.Handle("/transaction/{transactionId}", middlewares.AuthMiddleware(http.HandlerFunc(controllers.GetUserTransactionDetail))).Methods("GET")
 }

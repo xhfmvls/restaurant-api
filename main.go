@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	r := mux.NewRouter()
+	r := mux.NewRouter().PathPrefix("/api").Subrouter()
 	godotenv.Load(".env")
 	port, portEnvErr := strconv.Atoi(os.Getenv("PORT"))
 	if portEnvErr != nil {

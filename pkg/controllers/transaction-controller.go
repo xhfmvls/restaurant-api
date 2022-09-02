@@ -12,7 +12,11 @@ import (
 
 func CreateTransaction(w http.ResponseWriter, r *http.Request) {
 	userId := r.Context().Value(middlewares.IdKey).(int)
-	transaction := models.CreateTransaction(userId)
+	transaction, err := models.CreateTransaction(userId)
+	if err == 1 {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
 	res, _ := json.Marshal(transaction)
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
@@ -32,7 +36,8 @@ func GetUserTransactionDetail(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	transactionId, err := strconv.Atoi(vars["transactionId"])
 	if err != nil {
-		panic("ID invalid")
+		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 	transactionInfo := models.GetTransactionDetails(transactionId)
 	res, _ := json.Marshal(transactionInfo)
