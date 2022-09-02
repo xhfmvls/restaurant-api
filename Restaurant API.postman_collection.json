@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "83dfbde6-0aa2-47db-821c-d4e4c345162a",
 		"name": "Restaurant API",
+		"description": "Restaurant API Documentation with Postman\n\nGitHub Repository: [https://github.com/xhfmvls/restaurant-api](https://github.com/xhfmvls/restaurant-api)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17856588"
 	},
@@ -13,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"Name\": \"Apple Pie\",\r\n    \"Price\": 4.3\r\n}",
+					"raw": "{\r\n    \"Name\": \"Beef Burger\",\r\n    \"Price\": 1.5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -28,9 +29,136 @@
 					"path": [
 						"menu"
 					]
-				}
+				},
+				"description": "ADD new Food to Menu"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "POST Food (With Price)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Hash Browns\",\r\n    \"Price\": 1.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/menu",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"menu"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:37:43 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "155"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 17,\n    \"CreatedAt\": \"2022-09-02T19:37:42.9614195+07:00\",\n    \"UpdatedAt\": \"2022-09-02T19:37:42.9614195+07:00\",\n    \"DeletedAt\": null,\n    \"name\": \"Hash Browns\",\n    \"price\": 1.5\n}"
+				},
+				{
+					"name": "POST Food (Without Price)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Extra Pickles\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/menu",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"menu"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:47:47 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "155"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 21,\n    \"CreatedAt\": \"2022-09-02T20:47:47.0807677+07:00\",\n    \"UpdatedAt\": \"2022-09-02T20:47:47.0807677+07:00\",\n    \"DeletedAt\": null,\n    \"name\": \"Extra Pickles\",\n    \"price\": 1\n}"
+				},
+				{
+					"name": "POST Food (Error)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:48:15 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "GET Menu",
@@ -45,464 +173,810 @@
 					"path": [
 						"menu"
 					]
-				}
+				},
+				"description": "GET Foods List from Menu"
 			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Sorted by the name)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?sort=name-asc",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "sort",
-							"value": "name-asc"
+			"response": [
+				{
+					"name": "GET Menu",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/menu",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"menu"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Sorted by the name descending)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?sort=name-desc",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"key": "sort",
-							"value": "name-desc"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Sorted by the most to least expensive)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?sort=price-desc",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "sort",
-							"value": "price-desc"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Sorted by the least to most expensive)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?sort=price-asc",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "sort",
-							"value": "price-asc"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (1st Page)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?page=1&limit=8",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "1"
+							"key": "Content-Type",
+							"value": "pkglication/json"
 						},
 						{
-							"key": "limit",
-							"value": "8"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (2nd Page)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?page=2&limit=5",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:37:57 GMT"
+						},
 						{
-							"key": "page",
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 3,\n        \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pizza\",\n        \"price\": 4.49\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"BBQ Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    },\n    {\n        \"ID\": 10,\n        \"CreatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Soda\",\n        \"price\": 0.99\n    },\n    {\n        \"ID\": 11,\n        \"CreatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Mineral Water\",\n        \"price\": 0.49\n    },\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    },\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 16,\n        \"CreatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Apple Pie\",\n        \"price\": 4.3\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Sorted by the name)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?sort=name-asc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "name-asc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:38:17 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 16,\n        \"CreatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Apple Pie\",\n        \"price\": 4.3\n    },\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"BBQ Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 11,\n        \"CreatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Mineral Water\",\n        \"price\": 0.49\n    },\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    },\n    {\n        \"ID\": 3,\n        \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pizza\",\n        \"price\": 4.49\n    },\n    {\n        \"ID\": 10,\n        \"CreatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Soda\",\n        \"price\": 0.99\n    },\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    },\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Sorted by the name descending)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?sort=name-desc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "name-desc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:38:23 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    },\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 10,\n        \"CreatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Soda\",\n        \"price\": 0.99\n    },\n    {\n        \"ID\": 3,\n        \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pizza\",\n        \"price\": 4.49\n    },\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    },\n    {\n        \"ID\": 11,\n        \"CreatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Mineral Water\",\n        \"price\": 0.49\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    },\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"BBQ Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 16,\n        \"CreatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Apple Pie\",\n        \"price\": 4.3\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Sorted by the most to least expensive)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?sort=price-desc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "price-desc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:38:47 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 3,\n        \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pizza\",\n        \"price\": 4.49\n    },\n    {\n        \"ID\": 16,\n        \"CreatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Apple Pie\",\n        \"price\": 4.3\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    },\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    },\n    {\n        \"ID\": 10,\n        \"CreatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Soda\",\n        \"price\": 0.99\n    },\n    {\n        \"ID\": 11,\n        \"CreatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Mineral Water\",\n        \"price\": 0.49\n    },\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"BBQ Sauce\",\n        \"price\": 0.3\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Sorted by the least to most expensive)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?sort=price-asc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "price-asc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:38:54 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"BBQ Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 11,\n        \"CreatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Mineral Water\",\n        \"price\": 0.49\n    },\n    {\n        \"ID\": 10,\n        \"CreatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Soda\",\n        \"price\": 0.99\n    },\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    },\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    },\n    {\n        \"ID\": 16,\n        \"CreatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Apple Pie\",\n        \"price\": 4.3\n    },\n    {\n        \"ID\": 3,\n        \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pizza\",\n        \"price\": 4.49\n    }\n]"
+				},
+				{
+					"name": "GET Menu (1st Page)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?page=1&limit=8",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:39:38 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1103"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 3,\n        \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pizza\",\n        \"price\": 4.49\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"BBQ Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    }\n]"
+				},
+				{
+					"name": "GET Menu (2nd Page)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?page=2&limit=5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:39:59 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "692"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    },\n    {\n        \"ID\": 10,\n        \"CreatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Soda\",\n        \"price\": 0.99\n    },\n    {\n        \"ID\": 11,\n        \"CreatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Mineral Water\",\n        \"price\": 0.49\n    }\n]"
+				},
+				{
+					"name": "GET Menu (2nd Page + Sorted)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?page=2&limit=5&sort=price-asc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "price-asc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:40:18 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "693"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    },\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Search Pizza)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?name=Pizza",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Pizza"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:41:19 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "135"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 3,\n        \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pizza\",\n        \"price\": 4.49\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Search Hot Dog)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?name=Hot Dog",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Hot Dog"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:41:26 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "136"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Search Non-Existing Food)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?name=Martabak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Martabak"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:41:31 GMT"
+						},
+						{
+							"key": "Content-Length",
 							"value": "2"
-						},
-						{
-							"key": "limit",
-							"value": "5"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (2nd Page + Sorted)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?page=2&limit=5&sort=price-asc",
-					"host": [
-						"{{URL}}"
 					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "2"
-						},
-						{
-							"key": "limit",
-							"value": "5"
-						},
-						{
-							"key": "sort",
-							"value": "price-asc"
+					"cookie": [],
+					"body": "[]"
+				},
+				{
+					"name": "GET Menu (Filtered By Minimum Price)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?min=3.3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "min",
+									"value": "3.3"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Search Pizza)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?name=Pizza",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"key": "name",
-							"value": "Pizza"
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:42:11 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "273"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Search Hot Dog)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?name=Hot Dog",
-					"host": [
-						"{{URL}}"
 					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "Hot Dog"
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 3,\n        \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pizza\",\n        \"price\": 4.49\n    },\n    {\n        \"ID\": 16,\n        \"CreatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:55+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Apple Pie\",\n        \"price\": 4.3\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Filtered By Maximum Price)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?max=3.3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "max",
+									"value": "3.3"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Search Non-Exsisting Food)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?name=Martabak",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"key": "name",
-							"value": "Martabak"
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:42:18 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1793"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Filtered By Minumum Price)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?min=3.3",
-					"host": [
-						"{{URL}}"
 					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "min",
-							"value": "3.3"
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"BBQ Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    },\n    {\n        \"ID\": 10,\n        \"CreatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Soda\",\n        \"price\": 0.99\n    },\n    {\n        \"ID\": 11,\n        \"CreatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Mineral Water\",\n        \"price\": 0.49\n    },\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    },\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Filtered By Minumum and Minimum Price)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?min=3&max=4.2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "min",
+									"value": "3"
+								},
+								{
+									"key": "max",
+									"value": "4.2"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Filtered By Maximum Price)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?max=3.3",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"key": "max",
-							"value": "3.3"
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:42:24 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "133"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Filtered By Minumum and Minimum Price)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?min=3&max=4.2",
-					"host": [
-						"{{URL}}"
 					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "min",
-							"value": "3"
-						},
-						{
-							"key": "max",
-							"value": "4.2"
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Filtered By Maximum Price and Sorted by Name)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?max=3.3&sort=name-asc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "max",
+									"value": "3.3"
+								},
+								{
+									"key": "sort",
+									"value": "name-asc"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Filtered By Maximum Price and Sorted by Name)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?max=3.3&sort=name-asc",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"key": "max",
-							"value": "3.3"
+							"key": "Content-Type",
+							"value": "pkglication/json"
 						},
 						{
-							"key": "sort",
-							"value": "name-asc"
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:42:36 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1793"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (Filtered By Minumum and Minimum Price and Sorted By Price)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?min=2&max=4.2&sort=price-asc",
-					"host": [
-						"{{URL}}"
 					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "min",
-							"value": "2"
-						},
-						{
-							"key": "max",
-							"value": "4.2"
-						},
-						{
-							"key": "sort",
-							"value": "price-asc"
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:12+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"BBQ Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 11,\n        \"CreatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:16+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Mineral Water\",\n        \"price\": 0.49\n    },\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    },\n    {\n        \"ID\": 10,\n        \"CreatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:49:05+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Soda\",\n        \"price\": 0.99\n    },\n    {\n        \"ID\": 7,\n        \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Spicy Sauce\",\n        \"price\": 0.3\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    },\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    }\n]"
+				},
+				{
+					"name": "GET Menu (Filtered By Minumum and Minimum Price and Sorted By Price)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?min=2&max=4.2&sort=price-asc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "min",
+									"value": "2"
+								},
+								{
+									"key": "max",
+									"value": "4.2"
+								},
+								{
+									"key": "sort",
+									"value": "price-asc"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (1st Page + Sorted + Filtered)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?page=1&limit=5&sort=price-asc&min=1.15&max=3",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"menu"
-					],
-					"query": [
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"key": "page",
-							"value": "1"
+							"key": "Content-Type",
+							"value": "pkglication/json"
 						},
 						{
-							"key": "limit",
-							"value": "5"
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:42:54 GMT"
 						},
 						{
-							"key": "sort",
-							"value": "price-asc"
-						},
-						{
-							"key": "min",
-							"value": "1.15"
-						},
-						{
-							"key": "max",
-							"value": "3"
+							"key": "Content-Length",
+							"value": "410"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Menu (2nd Page + Sorted + Filtered)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/menu?page=2&limit=5&sort=price-asc&min=1.15&max=3",
-					"host": [
-						"{{URL}}"
 					],
-					"path": [
-						"menu"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "2"
-						},
-						{
-							"key": "limit",
-							"value": "5"
-						},
-						{
-							"key": "sort",
-							"value": "price-asc"
-						},
-						{
-							"key": "min",
-							"value": "1.15"
-						},
-						{
-							"key": "max",
-							"value": "3"
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    }\n]"
+				},
+				{
+					"name": "GET Menu (1st Page + Sorted + Filtered)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?page=1&limit=5&sort=price-asc&min=1.15&max=3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "price-asc"
+								},
+								{
+									"key": "min",
+									"value": "1.15"
+								},
+								{
+									"key": "max",
+									"value": "3"
+								}
+							]
 						}
-					]
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:43:13 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "697"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 9,\n        \"CreatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:52+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sweet Tea\",\n        \"price\": 1.21\n    },\n    {\n        \"ID\": 2,\n        \"CreatedAt\": \"2022-09-01T17:47:07+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:22+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"French Fries\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:34+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Lemon Tea\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:45+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Baked Potato\",\n        \"price\": 1.4\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:37:42+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hash Browns\",\n        \"price\": 1.5\n    }\n]"
+				},
+				{
+					"name": "GET Menu (2nd Page + Sorted + Filtered)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu?page=2&limit=5&sort=price-asc&min=1.15&max=3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "price-asc"
+								},
+								{
+									"key": "min",
+									"value": "1.15"
+								},
+								{
+									"key": "max",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:43:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "544"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 13,\n        \"CreatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:51:09+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Pasta\",\n        \"price\": 1.6\n    },\n    {\n        \"ID\": 4,\n        \"CreatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:48:02+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Hot Dog\",\n        \"price\": 2.1\n    },\n    {\n        \"ID\": 1,\n        \"CreatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:47:00+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Fried Chciken\",\n        \"price\": 2.23\n    },\n    {\n        \"ID\": 14,\n        \"CreatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"UpdatedAt\": \"2022-09-01T17:52:15+07:00\",\n        \"DeletedAt\": null,\n        \"name\": \"Sushi\",\n        \"price\": 3\n    }\n]"
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "GET Food by ID",
@@ -510,17 +984,202 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{URL}}/menu/3",
+					"raw": "{{URL}}/menu/7",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
 						"menu",
-						"3"
+						"7"
 					]
-				}
+				},
+				"description": "GET Food by Food ID"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "GET Food by ID of 3",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/menu/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:51:35 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "133"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 3,\n    \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n    \"UpdatedAt\": \"2022-09-01T17:47:42+07:00\",\n    \"DeletedAt\": null,\n    \"name\": \"Pizza\",\n    \"price\": 4.49\n}"
+				},
+				{
+					"name": "GET Food by ID of 3 (After Update)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:51:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "133"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 3,\n    \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n    \"UpdatedAt\": \"2022-09-02T20:50:26+07:00\",\n    \"DeletedAt\": null,\n    \"name\": \"Pizza\",\n    \"price\": 4.59\n}"
+				},
+				{
+					"name": "GET Food by ID of 7",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu/7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 12:52:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "138"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 7,\n    \"CreatedAt\": \"2022-09-01T17:48:26+07:00\",\n    \"UpdatedAt\": \"2022-09-01T17:48:26+07:00\",\n    \"DeletedAt\": null,\n    \"name\": \"Spicy Sauce\",\n    \"price\": 0.3\n}"
+				},
+				{
+					"name": "GET Food by ID (After Deleted)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu/7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:53:26 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 0,\n    \"CreatedAt\": \"0001-01-01T00:00:00Z\",\n    \"UpdatedAt\": \"0001-01-01T00:00:00Z\",\n    \"DeletedAt\": null,\n    \"name\": \"\",\n    \"price\": 0\n}"
+				},
+				{
+					"name": "GET Food by ID (Deleted/Non-Exist Food)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu/6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:39:30 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 0,\n    \"CreatedAt\": \"0001-01-01T00:00:00Z\",\n    \"UpdatedAt\": \"0001-01-01T00:00:00Z\",\n    \"DeletedAt\": null,\n    \"name\": \"\",\n    \"price\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "PUT Food",
@@ -529,7 +1188,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"price\": 1.4\r\n}",
+					"raw": "{\r\n    \"price\": 1.44\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -537,17 +1196,112 @@
 					}
 				},
 				"url": {
-					"raw": "{{URL}}/menu/2",
+					"raw": "{{URL}}/menu/8",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
 						"menu",
-						"2"
+						"8"
 					]
-				}
+				},
+				"description": "UPDATE Food Information by ID"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "PUT Food (Update Price for Food with ID of 3)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 4.59\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/menu/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:50:26 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "141"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 3,\n    \"CreatedAt\": \"2022-09-01T17:47:42+07:00\",\n    \"UpdatedAt\": \"2022-09-02T20:50:26.9291774+07:00\",\n    \"DeletedAt\": null,\n    \"name\": \"Pizza\",\n    \"price\": 4.59\n}"
+				},
+				{
+					"name": "PUT Food (Update Price for Food with ID of 8)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 1.44\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/menu/8",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:51:57 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "145"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 8,\n    \"CreatedAt\": \"2022-09-01T17:48:34+07:00\",\n    \"UpdatedAt\": \"2022-09-02T20:51:57.8599737+07:00\",\n    \"DeletedAt\": null,\n    \"name\": \"Lemon Tea\",\n    \"price\": 1.44\n}"
+				}
+			]
 		},
 		{
 			"name": "DELETE Food",
@@ -555,17 +1309,58 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{URL}}/menu/6",
+					"raw": "{{URL}}/menu/7",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
 						"menu",
-						"6"
+						"7"
 					]
-				}
+				},
+				"description": "DELETE Food by ID"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "DELETE Food by ID of 7",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/menu/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"menu",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "pkglication/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:52:52 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 0,\n    \"CreatedAt\": \"0001-01-01T00:00:00Z\",\n    \"UpdatedAt\": \"0001-01-01T00:00:00Z\",\n    \"DeletedAt\": null,\n    \"name\": \"\",\n    \"price\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "LOGIN",
@@ -590,63 +1385,161 @@
 						"auth",
 						"login"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "LOGIN 2",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"leone\",\r\n    \"password\": \"hello\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "{{URL}}/auth/login",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"auth",
-						"login"
-					]
-				}
+				"description": "LOGIN to existing account\n\nThis process is needed to perform further actions."
 			},
-			"response": []
-		},
-		{
-			"name": "LOGIN Failed",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"leone\",\r\n    \"password\": \"test\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"response": [
+				{
+					"name": "LOGIN (With Username \"lennon\")",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"lennon\",\r\n    \"password\": \"beatles\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "{{URL}}/auth/login",
-					"host": [
-						"{{URL}}"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "Token=\"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNjYyMTI4MDQxfQ.GGOZVWIqhXGz6h6FDWgLbQbLCTjwdV8e1z2XMmzZxck\"; Path=/; Expires=Fri, 02 Sep 2022 14:14:01 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:54:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "132"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
 					],
-					"path": [
-						"auth",
-						"login"
-					]
+					"cookie": [],
+					"body": "{\n    \"key\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNjYyMTI4MDQxfQ.GGOZVWIqhXGz6h6FDWgLbQbLCTjwdV8e1z2XMmzZxck\"\n}"
+				},
+				{
+					"name": "LOGIN (With Username \"leone\")",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"leone\",\r\n    \"password\": \"hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "Token=\"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjYyMTI4MDgwfQ.FCt2ELk-NFTtP1BfezESBprt36o40GkxK4eqCFtxZKI\"; Path=/; Expires=Fri, 02 Sep 2022 14:14:40 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:54:40 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "132"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"key\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjYyMTI4MDgwfQ.FCt2ELk-NFTtP1BfezESBprt36o40GkxK4eqCFtxZKI\"\n}"
+				},
+				{
+					"name": "LOGIN (Failed)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"leone\",\r\n    \"password\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Not Acceptable",
+					"code": 406,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 13:55:18 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "REGISTER",
@@ -655,7 +1548,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"leone\",\r\n    \"password\": \"hello\"\r\n}",
+					"raw": "{\r\n    \"username\": \"ringo\",\r\n    \"password\": \"starr\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -671,36 +1564,100 @@
 						"auth",
 						"register"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "REGISTER 2",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"lennon\",\r\n    \"password\": \"beatles\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "{{URL}}/auth/register",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"auth",
-						"register"
-					]
-				}
+				"description": "REGISTER to existing account\n\nThis process would create a new user row in the database."
 			},
-			"response": []
+			"response": [
+				{
+					"name": "REGISTER (Exist/Used Username)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"lennon\",\r\n    \"password\": \"beatles\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Not Acceptable",
+					"code": 406,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:00:31 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "REGISTER (Non-Exist Username)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"ringo\",\r\n    \"password\": \"starr\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:00:13 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "220"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 3,\n    \"CreatedAt\": \"2022-09-02T21:00:13.395212+07:00\",\n    \"UpdatedAt\": \"2022-09-02T21:00:13.395212+07:00\",\n    \"DeletedAt\": null,\n    \"username\": \"ringo\",\n    \"passwordHash\": \"557e4489db5fb3fbe2ad822a6799f9cb688cdf730f1123ed77d3cb1be264bfa9\"\n}"
+				}
+			]
 		},
 		{
 			"name": "GET Profile",
@@ -715,9 +1672,118 @@
 					"path": [
 						"user"
 					]
-				}
+				},
+				"description": "GET Profile of Logged User"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "GET Profile",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 15:06:10 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "207"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 1,\n    \"CreatedAt\": \"2022-09-01T17:46:22+07:00\",\n    \"UpdatedAt\": \"2022-09-01T17:46:22+07:00\",\n    \"DeletedAt\": null,\n    \"username\": \"lennon\",\n    \"passwordHash\": \"a6c70cf4d6fbc0678b5e040b85e389880eeaa8d6dd855cd8a6b3721cdc3d69f0\"\n}"
+				},
+				{
+					"name": "GET Profile (Deleted User)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:28:57 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "127"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\"ID\":0,\"CreatedAt\":\"0001-01-01T00:00:00Z\",\"UpdatedAt\":\"0001-01-01T00:00:00Z\",\"DeletedAt\":null,\"username\":\"\",\"passwordHash\":\"\"}"
+				},
+				{
+					"name": "GET Profile (Unauthorized)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:04:30 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "PUT Profile",
@@ -726,7 +1792,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"password\": \"yoko\"\r\n}",
+					"raw": "{\r\n    \"username\": \"joringo\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -741,9 +1807,142 @@
 					"path": [
 						"user"
 					]
-				}
+				},
+				"description": "StartFragment\n\nUPDATE Profile of Logged User"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "PUT Profile Password",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"octopus\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:27:02 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "214"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 3,\n    \"CreatedAt\": \"2022-09-02T21:00:13+07:00\",\n    \"UpdatedAt\": \"2022-09-02T21:27:02.7499296+07:00\",\n    \"DeletedAt\": null,\n    \"username\": \"ringo\",\n    \"passwordHash\": \"5633c9b8af6d089859afcbec42fdc03f8c407aaba9668218b433bd4959911465\"\n}"
+				},
+				{
+					"name": "PUT Profile Username",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"joringo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:27:52 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "216"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 3,\n    \"CreatedAt\": \"2022-09-02T21:00:13+07:00\",\n    \"UpdatedAt\": \"2022-09-02T21:27:52.6669394+07:00\",\n    \"DeletedAt\": null,\n    \"username\": \"joringo\",\n    \"passwordHash\": \"5633c9b8af6d089859afcbec42fdc03f8c407aaba9668218b433bd4959911465\"\n}"
+				},
+				{
+					"name": "PUT (Unauthorized)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"yoko\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:04:41 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "DELETE Profile",
@@ -758,18 +1957,89 @@
 					"path": [
 						"user"
 					]
-				}
+				},
+				"description": "DELETE Profile of Logged User"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "DELETE Profile",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:28:30 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "127"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 0,\n    \"CreatedAt\": \"0001-01-01T00:00:00Z\",\n    \"UpdatedAt\": \"0001-01-01T00:00:00Z\",\n    \"DeletedAt\": null,\n    \"username\": \"\",\n    \"passwordHash\": \"\"\n}"
+				},
+				{
+					"name": "DELETE Profile (Unauthorized)",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:06:42 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
-			"name": "ADD Food To Cart (Without Quantity)",
+			"name": "ADD Food To Cart",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"FoodId\": 9\r\n}",
+					"raw": "{\r\n    \"FoodId\": 14\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -784,35 +2054,229 @@
 					"path": [
 						"cart"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ADD Food To Cart (With Quantity)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"FoodId\": 4, \r\n    \"Quantity\": 3\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "{{URL}}/cart",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"cart"
-					]
-				}
+				"description": "ADD Food to User's Cart by Food ID"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "ADD Food To Cart (With Quantity)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 9, \r\n    \"Quantity\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:37:31 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "157"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 17,\n    \"CreatedAt\": \"2022-09-02T21:37:31.3558569+07:00\",\n    \"UpdatedAt\": \"2022-09-02T21:37:31.3558569+07:00\",\n    \"DeletedAt\": null,\n    \"userid\": 1,\n    \"foodid\": 9,\n    \"quantity\": 3\n}"
+				},
+				{
+					"name": "ADD Food To Cart (Without Quantity)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:37:12 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "158"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 16,\n    \"CreatedAt\": \"2022-09-02T21:37:12.6800061+07:00\",\n    \"UpdatedAt\": \"2022-09-02T21:37:12.6800061+07:00\",\n    \"DeletedAt\": null,\n    \"userid\": 1,\n    \"foodid\": 14,\n    \"quantity\": 1\n}"
+				},
+				{
+					"name": "ADD Food To Cart (With Quantity) 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 10, \r\n    \"Quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:41:47 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "156"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 19,\n    \"CreatedAt\": \"2022-09-02T21:41:47.154606+07:00\",\n    \"UpdatedAt\": \"2022-09-02T21:41:47.154606+07:00\",\n    \"DeletedAt\": null,\n    \"userid\": 1,\n    \"foodid\": 10,\n    \"quantity\": 2\n}"
+				},
+				{
+					"name": "ADD Food To Cart (Non-Exist Food ID)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 200, \r\n    \"Quantity\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:41:07 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "ADD Food To Cart (Unauthorized)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:17:39 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "GET Cart",
@@ -827,9 +2291,115 @@
 					"path": [
 						"cart"
 					]
-				}
+				},
+				"description": "GET Cart Information (List of Food in Cart)"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "GET Cart",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:43:10 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "428"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-02T19:21:27+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:21:27+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"foodid\": 4,\n        \"quantity\": 3\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T21:37:31+07:00\",\n        \"UpdatedAt\": \"2022-09-02T21:37:31+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"foodid\": 9,\n        \"quantity\": 3\n    },\n    {\n        \"ID\": 19,\n        \"CreatedAt\": \"2022-09-02T21:41:47+07:00\",\n        \"UpdatedAt\": \"2022-09-02T21:41:47+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"foodid\": 10,\n        \"quantity\": 2\n    }\n]"
+				},
+				{
+					"name": "GET Cart (After Update)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/cart",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:45:39 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "428"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 15,\n        \"CreatedAt\": \"2022-09-02T19:21:27+07:00\",\n        \"UpdatedAt\": \"2022-09-02T19:21:27+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"foodid\": 4,\n        \"quantity\": 3\n    },\n    {\n        \"ID\": 17,\n        \"CreatedAt\": \"2022-09-02T21:37:31+07:00\",\n        \"UpdatedAt\": \"2022-09-02T21:45:20+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"foodid\": 9,\n        \"quantity\": 4\n    },\n    {\n        \"ID\": 19,\n        \"CreatedAt\": \"2022-09-02T21:41:47+07:00\",\n        \"UpdatedAt\": \"2022-09-02T21:41:47+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"foodid\": 10,\n        \"quantity\": 2\n    }\n]"
+				},
+				{
+					"name": "GET Cart (Unauthorized)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/cart",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:18:06 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Delete Food From Cart",
@@ -838,7 +2408,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"FoodId\": 9\r\n}",
+					"raw": "{\r\n    \"FoodId\": 14\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -853,9 +2423,98 @@
 					"path": [
 						"cart"
 					]
-				}
+				},
+				"description": "DELETE Food from User's Cart"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete Food From Cart",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:42:53 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 0,\n    \"CreatedAt\": \"0001-01-01T00:00:00Z\",\n    \"UpdatedAt\": \"0001-01-01T00:00:00Z\",\n    \"DeletedAt\": null,\n    \"userid\": 0,\n    \"foodid\": 0,\n    \"quantity\": 0\n}"
+				},
+				{
+					"name": "Delete Food From Cart (Unauthorized)",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:20:05 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Update Food In Cart",
@@ -864,7 +2523,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"FoodId\": 4,\r\n    \"Quantity\": 2\r\n}",
+					"raw": "{\r\n    \"FoodId\": 9,\r\n    \"Quantity\": 4\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -879,9 +2538,98 @@
 					"path": [
 						"cart"
 					]
-				}
+				},
+				"description": "UPDATE Food from User's Cart"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Update Food In Cart",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 9,\r\n    \"Quantity\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:45:20 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "149"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 17,\n    \"CreatedAt\": \"2022-09-02T21:37:31+07:00\",\n    \"UpdatedAt\": \"2022-09-02T21:45:20.6508411+07:00\",\n    \"DeletedAt\": null,\n    \"userid\": 1,\n    \"foodid\": 9,\n    \"quantity\": 4\n}"
+				},
+				{
+					"name": "Update Food In Cart (Unauthorized)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FoodId\": 4,\r\n    \"Quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:20:17 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "POST (Create) Transaction",
@@ -896,9 +2644,111 @@
 					"path": [
 						"transaction"
 					]
-				}
+				},
+				"description": "CREATE new Transaction based on User's Cart"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "POST (Create) Transaction",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"transaction"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:46:21 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "675"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"TrHeader\": {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-02T21:46:20.7114733+07:00\",\n        \"UpdatedAt\": \"2022-09-02T21:46:20.7114733+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"purchasestatus\": true\n    },\n    \"TrDetails\": [\n        {\n            \"ID\": 10,\n            \"CreatedAt\": \"2022-09-02T21:46:20.7988382+07:00\",\n            \"UpdatedAt\": \"2022-09-02T21:46:20.7988382+07:00\",\n            \"DeletedAt\": null,\n            \"transactionid\": 8,\n            \"foodid\": 4,\n            \"quantity\": 3\n        },\n        {\n            \"ID\": 11,\n            \"CreatedAt\": \"2022-09-02T21:46:21.048864+07:00\",\n            \"UpdatedAt\": \"2022-09-02T21:46:21.048864+07:00\",\n            \"DeletedAt\": null,\n            \"transactionid\": 8,\n            \"foodid\": 9,\n            \"quantity\": 4\n        },\n        {\n            \"ID\": 12,\n            \"CreatedAt\": \"2022-09-02T21:46:21.2065536+07:00\",\n            \"UpdatedAt\": \"2022-09-02T21:46:21.2065536+07:00\",\n            \"DeletedAt\": null,\n            \"transactionid\": 8,\n            \"foodid\": 10,\n            \"quantity\": 2\n        }\n    ]\n}"
+				},
+				{
+					"name": "POST /Create Transaction (Unauthorized)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/transaction",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:20:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "POST (Create) Transaction with Empty Cart",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/transaction",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 15:03:07 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "GET Transactions List",
@@ -913,9 +2763,80 @@
 					"path": [
 						"transaction"
 					]
-				}
+				},
+				"description": "GET User's past Transactions List"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "GET Transactions List",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"transaction"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 15:03:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "418"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-02T03:58:23+07:00\",\n        \"UpdatedAt\": \"2022-09-02T03:58:23+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"purchasestatus\": true\n    },\n    {\n        \"ID\": 6,\n        \"CreatedAt\": \"2022-09-02T03:58:47+07:00\",\n        \"UpdatedAt\": \"2022-09-02T03:58:47+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"purchasestatus\": true\n    },\n    {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-02T21:46:20+07:00\",\n        \"UpdatedAt\": \"2022-09-02T21:46:20+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"purchasestatus\": true\n    }\n]"
+				},
+				{
+					"name": "GET Transactions List (Unauthorized)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/transaction",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 14:20:34 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "GET Transaction Details",
@@ -923,17 +2844,157 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{URL}}/transaction/5",
+					"raw": "{{URL}}/transaction/20",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
 						"transaction",
-						"5"
+						"20"
 					]
-				}
+				},
+				"description": "GET Details of User's past Transactions by ID"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "GET Transaction Details With ID of 8",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/transaction/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 15:03:53 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "613"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"TrHeader\": {\n        \"ID\": 8,\n        \"CreatedAt\": \"2022-09-02T21:46:20+07:00\",\n        \"UpdatedAt\": \"2022-09-02T21:46:20+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"purchasestatus\": true\n    },\n    \"TrDetails\": [\n        {\n            \"ID\": 10,\n            \"CreatedAt\": \"2022-09-02T21:46:20+07:00\",\n            \"UpdatedAt\": \"2022-09-02T21:46:20+07:00\",\n            \"DeletedAt\": null,\n            \"transactionid\": 8,\n            \"foodid\": 4,\n            \"quantity\": 3\n        },\n        {\n            \"ID\": 11,\n            \"CreatedAt\": \"2022-09-02T21:46:21+07:00\",\n            \"UpdatedAt\": \"2022-09-02T21:46:21+07:00\",\n            \"DeletedAt\": null,\n            \"transactionid\": 8,\n            \"foodid\": 9,\n            \"quantity\": 4\n        },\n        {\n            \"ID\": 12,\n            \"CreatedAt\": \"2022-09-02T21:46:21+07:00\",\n            \"UpdatedAt\": \"2022-09-02T21:46:21+07:00\",\n            \"DeletedAt\": null,\n            \"transactionid\": 8,\n            \"foodid\": 10,\n            \"quantity\": 2\n        }\n    ]\n}"
+				},
+				{
+					"name": "GET Transaction Details With ID of 5",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/transaction/5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"transaction",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 15:04:21 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "461"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"TrHeader\": {\n        \"ID\": 5,\n        \"CreatedAt\": \"2022-09-02T03:58:23+07:00\",\n        \"UpdatedAt\": \"2022-09-02T03:58:23+07:00\",\n        \"DeletedAt\": null,\n        \"userid\": 1,\n        \"purchasestatus\": true\n    },\n    \"TrDetails\": [\n        {\n            \"ID\": 6,\n            \"CreatedAt\": \"2022-09-02T03:58:23+07:00\",\n            \"UpdatedAt\": \"2022-09-02T03:58:23+07:00\",\n            \"DeletedAt\": null,\n            \"transactionid\": 5,\n            \"foodid\": 9,\n            \"quantity\": 1\n        },\n        {\n            \"ID\": 7,\n            \"CreatedAt\": \"2022-09-02T03:58:24+07:00\",\n            \"UpdatedAt\": \"2022-09-02T03:58:24+07:00\",\n            \"DeletedAt\": null,\n            \"transactionid\": 5,\n            \"foodid\": 4,\n            \"quantity\": 3\n        }\n    ]\n}"
+				},
+				{
+					"name": "GET Transaction Details (Non-Exist)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/transaction/20",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"transaction",
+								"20"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Sep 2022 15:04:42 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "157"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"TrHeader\": {\n        \"ID\": 0,\n        \"CreatedAt\": \"0001-01-01T00:00:00Z\",\n        \"UpdatedAt\": \"0001-01-01T00:00:00Z\",\n        \"DeletedAt\": null,\n        \"userid\": 0,\n        \"purchasestatus\": false\n    },\n    \"TrDetails\": []\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "localhost:8000/api/v1",
+			"type": "string"
 		}
 	]
 }

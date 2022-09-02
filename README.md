@@ -1,5 +1,8 @@
 # RESTAURANT API
-Restaurant API created with GO
+Restaurant API created with GO <br>
+This API is a prototype (and implementation) of REST API for Restaurants created with Golang. The models of entities here are created based on the most simple data model that could be implemented. As this API is just a prototype, there are still many points that could be developed such as the data model, responded data structure, and performance. But I believe that this API prototype has covered all fundamentals of developing/building an API with Golang (with Gorilla/Mux and GORM). <br>
+
+To test the API, you may open this [Postman documentation](https://documenter.getpostman.com/view/VUxRQ6nM?version=latest) and explore all the test examples of each request. 
 
 ## Pre-requisites
 
@@ -69,6 +72,10 @@ go build .\main.go
 
 .\main.exe
 ```
+
+### 5. Request Testing
+[Published Restaurant API Documentation](https://documenter.getpostman.com/view/VUxRQ6nM?version=latest) <br>
+[Json of API Documentation](https://github.com/xhfmvls/restaurant-api/blob/main/Restaurant%20API.postman_collection.json)
 
 ## Contributor
 
